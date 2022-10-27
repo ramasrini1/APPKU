@@ -14,15 +14,16 @@ import caGregorian from 'cldr-dates-full/main/es/ca-gregorian.json';
 import dateFields from 'cldr-dates-full/main/es/dateFields.json';
 import timeZoneNames from 'cldr-dates-full/main/es/timeZoneNames.json';
 load(likelySubtags, currencyData, weekData, numbers, currencies, caGregorian, dateFields, timeZoneNames);
-import esMessages from './es.json';
-loadMessages(esMessages, 'es-ES');
+//import esMessages from './es.json';
+//loadMessages(esMessages, 'es-ES');
 import { process } from '@progress/kendo-data-query';
 import orders from './orders.json';
 const DATE_FORMAT = 'yyyy-mm-dd hh:mm:ss.SSS';
 const intl = new IntlService('en');
 orders.forEach(o => {
   o.orderDate = intl.parseDate(o.orderDate ? o.orderDate : '20/20/2020', DATE_FORMAT);
-  o.shippedDate = o.shippedDate ? undefined : intl.parseDate(o.shippedDate ? o.orderDate.toString() : '20/20/2020', DATE_FORMAT);
+  o.shippedDate = intl.parseDate(o.shippedDate ? o.shippedDate.toString() : '20/20/2002', DATE_FORMAT);
+  //o.shippedDate = o.shippedDate ? undefined : intl.parseDate(o.shippedDate ? o.orderDate.toString() : '20/20/2020', DATE_FORMAT);
 });
 const DetailComponent = props => {
   const dataItem = props.dataItem;
